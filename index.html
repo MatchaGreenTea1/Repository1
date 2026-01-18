@@ -22,7 +22,7 @@
     <button id="cta">Test CTA Button</button>
 
     <p>
-      <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+      <a id="outbound_link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
         Outbound link test
       </a>
     </p>
@@ -39,5 +39,17 @@
         }
       });
     </script>
+    <script>
+      document.getElementById("outbound_link").addEventListener("click", () => {
+        console.log("Outbound link clicked");
+
+        if (typeof gtag === "function") {
+          gtag("event", "outbound_click", {
+            link_url: "https://www.linkedin.com"
+          });
+        }
+      });
+</script>
+
   </body>
 </html>
