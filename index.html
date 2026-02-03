@@ -26,6 +26,17 @@
         Outbound link test
       </a>
     </p>
+    <hr />
+
+    <h2>Analytics Implementation (GA4)</h2>
+    <ul>
+      <li>GA4 installed via gtag.js (Measurement ID: G-DFMWZB1QEF)</li>
+      <li>Custom events: <code>cta_click</code>, <code>outbound_click</code></li>
+      <li>Key event (conversion): <code>cta_click</code> (set in GA4 as a Key event)</li>
+      <li>Exploration funnel: <code>page_view → cta_click → outbound_click</code></li>
+    </ul>
+    
+    <p><strong>Next test:</strong> Change CTA text + placement to increase the key event rate.</p>
 
     <script>
       document.getElementById("cta").addEventListener("click", () => {
