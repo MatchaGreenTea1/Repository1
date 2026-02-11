@@ -1,81 +1,95 @@
 <!doctype html>
 <html lang="en">
-  <!--      https://matchagreentea1.github.io/Repository1/    -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Joshua – GA4 Practice Site</title>
+    <title>GA4 Practice Site</title>
 
-    <!-- Google tag (gtag.js) -->
+    <!-- GA4 (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFMWZB1QEF"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-DFMWZB1QEF');
+      gtag("js", new Date());
+      gtag("config", "G-DFMWZB1QEF");
     </script>
+
+    <style>
+      body{
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 18px;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+      .muted{ color:#555; }
+      button{
+        padding: 10px 14px;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        background: #f5f5f5;
+        cursor: pointer;
+      }
+      button:hover{ background:#eee; }
+      .box{
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+      }
+      code{
+        background:#f2f2f2;
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>GA4 Practice Site</h1>
-    <p>This site exists to learn Google Analytics (GA4).</p>
+    <main>
+      <h1>GA4 Practice Site</h1>
+      <p class="muted">This site exists to learn Google Analytics (GA4).</p>
 
-    <button id="cta">Test CTA Button</button>
-
-    <p>
-      <a id="outbound_link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
-        Outbound link test
-      </a>
-    </p>
-    <hr />
-
-<hr>
-
-<h2>My Google Analytics 4 Notes</h2>
+      <button id="cta">Test CTA Button</button>
 
       <p>
-      I made this site on GitHub Pages so I could practice Google Analytics (GA4) on something I control.
-      Then I created a GA4 property + web data stream and added the GA4 tracking code to this page.
-      </p>
-      
-      <ul>
-        <li><strong>GA4 is installed</strong> (Measurement ID: <code>G-DFMWZB1QEF</code>)</li>
-        <li><strong>Button tracking:</strong> when the CTA button is clicked, it sends an event called <code>cta_click</code></li>
-        <li><strong>Link tracking:</strong> when the LinkedIn link is clicked, it sends an event called <code>outbound_click</code></li>
-        <li><strong>Conversion (Key event):</strong> I marked <code>cta_click</code> as a Key event in GA4</li>
-        <li><strong>Funnel:</strong> I built a funnel in GA4 Explore: <code>page_view → cta_click → outbound_click</code></li>
-      </ul>
-      
-      <p>
-      <strong>Next thing I want to test:</strong> change the CTA text and placement and see if more people click it.
+        <a id="outbound_link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+          Outbound link test
+        </a>
       </p>
 
-    
-    <p><strong>Next test:</strong> Change CTA text + placement to increase the key event rate.</p>
+      <div class="box">
+        <h2>My GA4 Notes</h2>
+        <p class="muted">
+          I built this site on GitHub Pages so I could practice GA4 on something I control.
+          Then I created a GA4 property + web data stream and added the tracking code to this page.
+        </p>
+
+        <ul>
+          <li><strong>Measurement ID:</strong> <code>G-DFMWZB1QEF</code></li>
+          <li><strong>Custom events:</strong> <code>cta_click</code>, <code>outbound_click</code></li>
+          <li><strong>Key event (conversion):</strong> <code>cta_click</code></li>
+          <li><strong>Funnel:</strong> <code>page_view → cta_click → outbound_click</code></li>
+        </ul>
+
+        <p><strong>Next test:</strong> change the CTA text and placement and see if it attracts more attention to click.</p>
+      </div>
+    </main>
 
     <script>
+      function sendEvent(name, params) {
+        if (typeof gtag === "function") gtag("event", name, params || {});
+      }
+
       document.getElementById("cta").addEventListener("click", () => {
         console.log("CTA clicked");
-
-        // Send GA4 custom event
-        if (typeof gtag === "function") {
-          gtag("event", "cta_click", {
-            button_name: "test_cta_button"
-          });
-        }
+        sendEvent("cta_click", { button_name: "test_cta_button" });
       });
-    </script>
-    <script>
+
       document.getElementById("outbound_link").addEventListener("click", () => {
         console.log("Outbound link clicked");
-
-        if (typeof gtag === "function") {
-          gtag("event", "outbound_click", {
-            link_url: "https://www.linkedin.com"
-          });
-        }
+        sendEvent("outbound_click", { link_url: "https://www.linkedin.com" });
       });
-</script>
-
+    </script>
   </body>
 </html>
