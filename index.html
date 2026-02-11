@@ -28,13 +28,27 @@
     </p>
     <hr />
 
-    <h2>Analytics Implementation (GA4)</h2>
-    <ul>
-      <li>GA4 installed via gtag.js (Measurement ID: G-DFMWZB1QEF)</li>
-      <li>Custom events: <code>cta_click</code>, <code>outbound_click</code></li>
-      <li>Key event (conversion): <code>cta_click</code> (set in GA4 as a Key event)</li>
-      <li>Exploration funnel: <code>page_view → cta_click → outbound_click</code></li>
-    </ul>
+<hr>
+
+<h2>My GA4 Notes (what I did)</h2>
+
+      <p>
+      I made this site on GitHub Pages so I could practice Google Analytics (GA4) on something I control.
+      Then I created a GA4 property + web data stream and added the GA4 tracking code to this page.
+      </p>
+      
+      <ul>
+        <li><strong>GA4 is installed</strong> (Measurement ID: <code>G-DFMWZB1QEF</code>)</li>
+        <li><strong>Button tracking:</strong> when the CTA button is clicked, it sends an event called <code>cta_click</code></li>
+        <li><strong>Link tracking:</strong> when the LinkedIn link is clicked, it sends an event called <code>outbound_click</code></li>
+        <li><strong>Conversion (Key event):</strong> I marked <code>cta_click</code> as a Key event in GA4</li>
+        <li><strong>Funnel:</strong> I built a funnel in GA4 Explore: <code>page_view → cta_click → outbound_click</code></li>
+      </ul>
+      
+      <p>
+      <strong>Next thing I want to test:</strong> change the CTA text and placement and see if more people click it.
+      </p>
+
     
     <p><strong>Next test:</strong> Change CTA text + placement to increase the key event rate.</p>
 
